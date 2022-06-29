@@ -1,0 +1,11 @@
+<launch>
+  <arg name="use_gps_time" default="false" />
+  <arg name="current_pose_topic" default="current_pose" />
+
+  <node pkg="novatel_to_pose" type="novatel_to_pose_node" name="novatel_to_pose_node" output="screen">
+    <param name="use_gps_time" value="$(arg use_gps_time)" />
+    <param name="current_pose_topic" value="$(arg current_pose_topic)" />
+  </node>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find novatel_to_pose)/rviz/novatel_to_pose.rviz" />
+</launch>
